@@ -1,4 +1,4 @@
-import 'package:ecom/views/common/custom_appbar.dart';
+import 'package:ecom/widgets/custom_appbar.dart';
 import 'package:ecom/widgets/homepage_appbar_title.dart';
 import 'package:flutter/material.dart';
 
