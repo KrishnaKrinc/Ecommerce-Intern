@@ -8,7 +8,6 @@ class CustomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppBar(
       title: title,
-      backgroundColor: Colors.transparent,
       elevation: 0,
     );
   }

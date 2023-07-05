@@ -26,13 +26,13 @@ class Styles {
   static const TextStyle appBarTitleStyle = TextStyle(
     fontSize: 18,
     fontWeight: FontWeight.bold,
-    color: Colors.black,
+    color: Colors.white,
   );
 
   static const TextStyle buttonTextStyle = TextStyle(
     fontSize: 15,
     fontWeight: FontWeight.bold,
-    color: Colors.white,
+    color: Colors.blue,
   );
 
   static const BoxDecoration cardDecoration = BoxDecoration(

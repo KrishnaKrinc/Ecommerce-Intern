@@ -1,3 +1,7 @@
+import 'package:ecom/styles/styles.dart';
+import 'package:ecom/views/pagelayouts/Homepage/UI/appbar_cart_button.dart';
+import 'package:ecom/views/pagelayouts/Homepage/UI/appbar_title.dart';
+import 'package:ecom/views/pagelayouts/Homepage/UI/login_button.dart';
 import 'package:flutter/material.dart';
 
 class HomepageAppbarTitle extends StatelessWidget {
@@ -5,28 +9,26 @@ class HomepageAppbarTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return const Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        IconButton(
-          hoverColor: Colors.transparent,
-          icon: const Icon(
-            Icons.menu_rounded,
-            color: Colors.black,
+        // Main Title text/ Image
+        AppbarTitle(),
+
+        //Search Bar
+
+        SizedBox(
+          width: 180,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              //Login Action
+              LoginButton(),
+
+              // Cart Action
+              CartButton(),
+            ],
           ),
-          onPressed: () {
-            print('Burger Menu Pressed');
-          },
-        ),
-        IconButton(
-          hoverColor: Colors.transparent,
-          icon: const Icon(
-            Icons.shopping_cart,
-            color: Colors.black,
-          ),
-          onPressed: () {
-            print('Shoping Icon tapped');
-          },
         ),
       ],
     );
