@@ -1,4 +1,3 @@
-import 'package:ecom/styles/styles.dart';
 import 'package:ecom/views/pagelayouts/Homepage/UI/appbar_cart_button.dart';
 import 'package:ecom/views/pagelayouts/Homepage/UI/appbar_title.dart';
 import 'package:ecom/views/pagelayouts/Homepage/UI/login_button.dart';
