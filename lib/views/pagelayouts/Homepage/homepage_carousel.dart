@@ -10,6 +10,8 @@ class HomepageBanner extends StatefulWidget {
 }
 
 class _HomepageBannerState extends State<HomepageBanner> {
+  //
+  CustomArrow customArrow = CustomArrow();
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -18,12 +20,12 @@ class _HomepageBannerState extends State<HomepageBanner> {
         Positioned(
           left: 0,
           top: 80,
-          child: CustomArrow.leftArrow(),
+          child: customArrow.leftArrow(),
         ),
         Positioned(
           right: 0,
           top: 80,
-          child: CustomArrow.rightArrow(),
+          child: customArrow.rightArrow(),
         )
       ],
     );
