@@ -8,10 +8,10 @@ class HomepageAppbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const SizedBox(
-      height: 60,
       width: double.infinity,
       child: CustomAppBar(
         title: HomepageAppbarTitle(),
+        height: 60,
       ),
     );
   }
