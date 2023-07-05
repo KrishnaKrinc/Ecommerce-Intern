@@ -2,7 +2,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 class Carousel extends StatefulWidget {
-  const Carousel({super.key});
+  final CarouselController controller;
+  Carousel({required this.controller, super.key});
 
   @override
   State<Carousel> createState() => _CarouselState();
@@ -19,6 +20,7 @@ class _CarouselState extends State<Carousel> {
       width: size.width,
       height: 250,
       child: CarouselSlider(
+        carouselController: widget.controller,
         items: [
           "https://rukminim1.flixcart.com/fk-p-flap/1688/280/image/dcc27dd8f1f628b9.png?q=50",
           "https://rukminim1.flixcart.com/fk-p-flap/1688/280/image/84ae27f93c14a4e3.jpg?q=50",
