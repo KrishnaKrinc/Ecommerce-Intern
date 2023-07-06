@@ -11,20 +11,25 @@ class HomepageLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(10.0),
-      child: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        physics: BouncingScrollPhysics(),
-        child: Column(
-          children: [
-            HomepageAppbar(),
-            HomepageCategories(),
-            HomepageBanner(),
-            HomePageProductCards(),
-          ],
+
+    return Column(
+      children: [
+        HomepageAppbar(),
+        Expanded(
+          child: SingleChildScrollView(
+            padding: EdgeInsets.all(10.0),
+            scrollDirection: Axis.vertical,
+            physics: BouncingScrollPhysics(),
+            child: Column(
+              children: [
+                HomepageCategories(),
+                HomepageBanner(),
+                HomePageProductCards(),
+              ],
+            ),
+          ),
         ),
-      ),
+      ],
     );
   }
 }
