@@ -11,11 +11,11 @@ class CategoriesList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 180,
+    return Container(
+      width: 1350,
+      height: 100,
       child: ListView.builder(
         physics: const BouncingScrollPhysics(),
-        padding: const EdgeInsets.symmetric(vertical: 8.0),
         scrollDirection: Axis.horizontal,
         itemCount: catergoriesList.length,
         itemBuilder: (context, index) {

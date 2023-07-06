@@ -14,13 +14,14 @@ class CategoriesCardUI extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Image.network(catergoriesList[index]['url']),
-        Text(
-          catergoriesList[index]['CategoriesName'],
-          textAlign: TextAlign.center,
-          style: Styles.productNameStyle,
+        Expanded(child: Image.network(catergoriesList[index]['url'])),
+        Expanded(
+          child: Text(
+            catergoriesList[index]['CategoriesName'],
+            textAlign: TextAlign.center,
+            style: Styles.productNameStyle,
+          ),
         ),
       ],
     );
