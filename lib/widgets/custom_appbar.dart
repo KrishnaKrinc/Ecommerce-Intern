@@ -4,6 +4,7 @@ class CustomAppBar extends StatelessWidget {
   final Widget title;
   final Color backgroundColor;
   final double height;
+
   const CustomAppBar({
     super.key,
     required this.title,
