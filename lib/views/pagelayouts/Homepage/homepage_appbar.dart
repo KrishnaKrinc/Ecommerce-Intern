@@ -1,5 +1,9 @@
 import 'package:ecom/widgets/custom_appbar.dart';
+
 import 'package:ecom/widgets/homepage_appbar_title.dart';
+
+import 'package:ecom/views/pagelayouts/Homepage/UI/homepage_appbar_title.dart';
+
 import 'package:flutter/material.dart';
 
 class HomepageAppbar extends StatelessWidget {
@@ -8,10 +12,10 @@ class HomepageAppbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const SizedBox(
-      height: 60,
       width: double.infinity,
       child: CustomAppBar(
         title: HomepageAppbarTitle(),
+        height: 60,
       ),
     );
   }
