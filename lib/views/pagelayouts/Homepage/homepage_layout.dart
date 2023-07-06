@@ -12,7 +12,7 @@ class HomepageLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
+      children: const [
         HomepageAppbar(),
         Expanded(
           child: SingleChildScrollView(

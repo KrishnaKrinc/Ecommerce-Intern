@@ -7,6 +7,8 @@ import 'package:ecom/widgets/custom_arrows.dart';
 import 'package:flutter/material.dart';
 
 class HomepageBanner extends StatefulWidget {
+  const HomepageBanner({super.key});
+
   @override
   State<HomepageBanner> createState() => _HomepageBannerState();
 }
