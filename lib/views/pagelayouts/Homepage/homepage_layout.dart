@@ -12,7 +12,8 @@ class HomepageLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: const [
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
         HomepageAppbar(),
         Expanded(
           child: SingleChildScrollView(
@@ -20,6 +21,7 @@ class HomepageLayout extends StatelessWidget {
             scrollDirection: Axis.vertical,
             physics: BouncingScrollPhysics(),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 HomepageCategories(),
                 HomepageBanner(),
