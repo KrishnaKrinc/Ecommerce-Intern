@@ -7,8 +7,8 @@ class Homepage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: const Scaffold(
+    return const SafeArea(
+      child: Scaffold(
         body: ResponsiveLayout(
           mobile: HomepageLayout(),
           tablet: HomepageLayout(),
