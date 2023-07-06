@@ -11,6 +11,7 @@ class HomepageLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Column(
       children: const [
         HomepageAppbar(),
@@ -23,7 +24,7 @@ class HomepageLayout extends StatelessWidget {
               children: [
                 HomepageCategories(),
                 HomepageBanner(),
-                HomepageProductCards(),
+                HomePageProductCards(),
               ],
             ),
           ),
