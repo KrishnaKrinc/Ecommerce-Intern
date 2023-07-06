@@ -15,6 +15,7 @@ class HomePageProductCards extends StatefulWidget {
 class _HomePageProductCardsState extends State<HomePageProductCards> {
   //
   bool isRightArrowVisible = true;
+  ScrollController scrollController = ScrollController();
   List productImages = [
     "https://rukminim1.flixcart.com/flap/200/200/image/20c224cd52ae7a87.jpg?q=70",
     "https://rukminim1.flixcart.com/image/200/200/xif0q/monitor/0/p/z/-original-imaggf5qqz8bnfaf.jpeg?q=70",
@@ -23,15 +24,13 @@ class _HomePageProductCardsState extends State<HomePageProductCards> {
     "https://rukminim1.flixcart.com/image/200/200/jwzabgw0/trimmer/y/4/r/sensitive-touch-expert-veet-original-imafhjh5ah7vf9zc.jpeg?q=70",
     "https://rukminim1.flixcart.com/image/200/200/xif0q/projector/k/h/n/i9-pro-max-hd-720p-10-e03i31-led-projector-egate-original-imaghhxfshbcbk55.jpeg?q=70",
   ];
-  CustomArrow customArrow = CustomArrow();
-  ScrollController scrollController = ScrollController();
 
   @override
   void initState() {
     super.initState();
     scrollController.addListener(() {
       setState(() {
-        isRightArrowVisible = !(scrollController.position.pixels ==
+        isRightArrowVisible = (scrollController.position.pixels ==
             scrollController.position.maxScrollExtent);
       });
     });
@@ -45,6 +44,8 @@ class _HomePageProductCardsState extends State<HomePageProductCards> {
 
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
+    CustomArrow customArrow = CustomArrow(size: size);
     return SizedBox(
       height: 370,
       child: Row(
