@@ -18,7 +18,7 @@ class HomepageAppbarTitle extends StatelessWidget {
 
         //Search Bar
         Container(
-          constraints: BoxConstraints(maxWidth: size.width / 2.605),
+          constraints: BoxConstraints(maxWidth: size.width / 2.7),
           child: const Row(
             children: [
               Flexible(

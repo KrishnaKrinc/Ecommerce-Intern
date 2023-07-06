@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class Carousel extends StatefulWidget {
   final CarouselController controller;
-  Carousel({required this.controller, super.key});
+  const Carousel({required this.controller, super.key});
 
   @override
   State<Carousel> createState() => _CarouselState();
@@ -16,7 +16,7 @@ class _CarouselState extends State<Carousel> {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-    return Container(
+    return SizedBox(
       width: size.width,
       height: 250,
       child: CarouselSlider(

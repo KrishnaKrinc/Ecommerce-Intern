@@ -7,7 +7,7 @@ class CustomArrow {
       width: 50,
       height: 100,
       color: Colors.white,
-      child: Icon(Icons.arrow_back_ios),
+      child: const Icon(Icons.arrow_back_ios),
     );
   }
 
@@ -16,7 +16,7 @@ class CustomArrow {
       width: 50,
       height: 100,
       color: Colors.white,
-      child: Icon(Icons.arrow_forward_ios),
+      child: const Icon(Icons.arrow_forward_ios),
     );
   }
 }

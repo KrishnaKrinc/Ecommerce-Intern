@@ -7,25 +7,25 @@ class AppTheme {
     scaffoldBackgroundColor: Colors.white,
     fontFamily: 'Roboto',
     textTheme: const TextTheme(
-      headline1: TextStyle(
+      displayLarge: TextStyle(
         fontSize: 24,
         fontWeight: FontWeight.bold,
         color: Colors.black,
       ),
-      headline2: TextStyle(
+      displayMedium: TextStyle(
         fontSize: 20,
         fontWeight: FontWeight.bold,
         color: Colors.black,
       ),
-      subtitle1: TextStyle(
+      titleMedium: TextStyle(
         fontSize: 16,
         color: Colors.grey,
       ),
-      bodyText1: TextStyle(
+      bodyLarge: TextStyle(
         fontSize: 14,
         color: Colors.black,
       ),
-      bodyText2: TextStyle(
+      bodyMedium: TextStyle(
         fontSize: 12,
         color: Colors.black54,
       ),
@@ -37,19 +37,19 @@ class AppTheme {
         color: Colors.black,
       ),
       toolbarTextStyle: const TextTheme(
-        headline6: TextStyle(
+        titleLarge: TextStyle(
           fontSize: 18,
           fontWeight: FontWeight.bold,
           color: Colors.black,
         ),
-      ).bodyText2,
+      ).bodyMedium,
       titleTextStyle: const TextTheme(
-        headline6: TextStyle(
+        titleLarge: TextStyle(
           fontSize: 18,
           fontWeight: FontWeight.bold,
           color: Colors.black,
         ),
-      ).headline6,
+      ).titleLarge,
     ),
     buttonTheme: ButtonThemeData(
       buttonColor: Colors.orange,
@@ -78,25 +78,25 @@ class AppTheme {
     scaffoldBackgroundColor: const Color.fromARGB(255, 21, 21, 21),
     fontFamily: 'Roboto',
     textTheme: const TextTheme(
-      headline1: TextStyle(
+      displayLarge: TextStyle(
         fontSize: 24,
         fontWeight: FontWeight.bold,
         color: Colors.white,
       ),
-      headline2: TextStyle(
+      displayMedium: TextStyle(
         fontSize: 20,
         fontWeight: FontWeight.bold,
         color: Colors.white,
       ),
-      subtitle1: TextStyle(
+      titleMedium: TextStyle(
         fontSize: 16,
         color: Colors.grey,
       ),
-      bodyText1: TextStyle(
+      bodyLarge: TextStyle(
         fontSize: 14,
         color: Colors.white,
       ),
-      bodyText2: TextStyle(
+      bodyMedium: TextStyle(
         fontSize: 12,
         color: Colors.white54,
       ),
@@ -108,19 +108,19 @@ class AppTheme {
         color: Colors.white,
       ),
       toolbarTextStyle: const TextTheme(
-        headline6: TextStyle(
+        titleLarge: TextStyle(
           fontSize: 18,
           fontWeight: FontWeight.bold,
           color: Colors.white,
         ),
-      ).bodyText2,
+      ).bodyMedium,
       titleTextStyle: const TextTheme(
-        headline6: TextStyle(
+        titleLarge: TextStyle(
           fontSize: 18,
           fontWeight: FontWeight.bold,
           color: Colors.white,
         ),
-      ).headline6,
+      ).titleLarge,
     ),
     buttonTheme: ButtonThemeData(
       buttonColor: Colors.orange,
