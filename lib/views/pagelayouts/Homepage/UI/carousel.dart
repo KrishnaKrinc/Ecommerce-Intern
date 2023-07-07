@@ -18,7 +18,7 @@ class _CarouselState extends State<Carousel> {
     final Size size = MediaQuery.of(context).size;
     return SizedBox(
       width: size.width,
-      height: 250,
+      height: size.height * 0.3,
       child: CarouselSlider(
         carouselController: widget.controller,
         items: [
