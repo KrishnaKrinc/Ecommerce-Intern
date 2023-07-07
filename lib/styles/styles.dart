@@ -7,7 +7,7 @@ class Styles {
     color: Colors.black,
   );
   static const TextStyle productNameStyle = TextStyle(
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: FontWeight.bold,
     color: Colors.black,
   );
@@ -29,7 +29,7 @@ class Styles {
   );
 
   static const TextStyle appBarTitleStyle = TextStyle(
-    fontSize: 20,
+    fontSize: 22,
     fontWeight: FontWeight.bold,
     color: Colors.white,
   );
