@@ -29,7 +29,7 @@ class Styles {
   );
 
   static const TextStyle appBarTitleStyle = TextStyle(
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: FontWeight.bold,
     color: Colors.white,
   );

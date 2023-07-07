@@ -7,15 +7,17 @@ class CategoriesCard extends StatelessWidget {
     super.key,
     required this.catergoriesList,
     required this.index,
+    required this.cardWidth,
   });
 
   final List catergoriesList;
   final int index;
+  final double cardWidth;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 150,
+    return SizedBox(
+      width: cardWidth,
       child: Card(
         elevation: 0,
         color: ThemeColors.transparent,
