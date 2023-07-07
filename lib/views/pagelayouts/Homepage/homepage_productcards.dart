@@ -30,7 +30,7 @@ class _HomePageProductCardsState extends State<HomePageProductCards> {
     super.initState();
     scrollController.addListener(() {
       setState(() {
-        isRightArrowVisible = (scrollController.position.pixels ==
+        isRightArrowVisible = !(scrollController.position.pixels ==
             scrollController.position.maxScrollExtent);
       });
     });
