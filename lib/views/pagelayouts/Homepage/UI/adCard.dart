@@ -4,12 +4,12 @@ import 'package:ecom/widgets/elevated_button.dart';
 import 'package:flutter/material.dart';
 
 class AdCard extends StatelessWidget {
-  const AdCard({super.key});
-
+  const AdCard({required this.width, super.key});
+  final double width;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 260,
+      width: width,
       height: 370,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -41,7 +41,7 @@ class AdCard extends StatelessWidget {
           Expanded(
             flex: 2,
             child: Container(
-              width: 250,
+              width: width,
               height: 200,
               decoration: const BoxDecoration(
                 image: DecorationImage(

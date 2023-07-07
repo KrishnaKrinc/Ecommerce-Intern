@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:ecom/views/pagelayouts/Homepage/UI/controllerLeft.dart';
+import 'package:ecom/views/pagelayouts/Homepage/UI/controllerRight.dart';
 import 'package:ecom/views/pagelayouts/Homepage/UI/carousel.dart';
 import 'package:ecom/widgets/custom_arrows.dart';
 import 'package:flutter/material.dart';
@@ -28,17 +30,21 @@ class _HomepageBannerState extends State<HomepageBanner> {
         Positioned(
           left: 0,
           top: size.height * 0.10,
-          child: GestureDetector(
-            onTap: buttonCarouselController.previousPage,
-            child: customArrow.leftArrow(),
+          child: ControllerLeftArrow(
+            scrollController: null,
+            buttonCarouselController: buttonCarouselController,
+            customArrow: customArrow,
+            size: size,
           ),
         ),
         Positioned(
-          left: 0,
+          right: 0,
           top: size.height * 0.10,
-          child: GestureDetector(
-            onTap: buttonCarouselController.previousPage,
-            child: customArrow.rightArrow(),
+          child: ControllerRightArrow(
+            scrollController: null,
+            buttonCarouselController: buttonCarouselController,
+            customArrow: customArrow,
+            size: size,
           ),
         ),
       ],
