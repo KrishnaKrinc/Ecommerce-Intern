@@ -1,7 +1,9 @@
+import 'package:ecom/routes/routes.dart';
 import 'package:ecom/styles/styles.dart';
 import 'package:ecom/utils/colors.dart';
 import 'package:ecom/widgets/elevated_button.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class AdCard extends StatelessWidget {
   const AdCard({required this.width, super.key});
@@ -33,8 +35,11 @@ class AdCard extends StatelessWidget {
             child: CustomElevatedButton(
               backgroundColor: ThemeColors.blue,
               onPressed: () {},
-              child: const Text(
-                "View All",
+              child: GestureDetector(
+                onTap: () => Get.toNamed(Routes.product),
+                child: const Text(
+                  "View All",
+                ),
               ),
             ),
           ),
