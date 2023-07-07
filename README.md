@@ -1,3 +1,3 @@
 # ecom
 
-A new Flutter project.
+Developing E-Commerce Site with flutter during Intern @Cartoon Mango Studios.
