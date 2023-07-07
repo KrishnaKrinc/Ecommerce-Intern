@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:ecom/views/pagelayouts/Homepage/homepage_carousel.dart';
 import 'package:ecom/views/pagelayouts/Homepage/homepage_appbar.dart';
 import 'package:ecom/views/pagelayouts/Homepage/homepage_catergories.dart';
@@ -10,6 +12,7 @@ class HomepageLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         HomepageAppbar(),
         Expanded(
@@ -18,6 +21,7 @@ class HomepageLayout extends StatelessWidget {
             scrollDirection: Axis.vertical,
             physics: BouncingScrollPhysics(),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 HomepageCategories(),
                 HomepageBanner(),
