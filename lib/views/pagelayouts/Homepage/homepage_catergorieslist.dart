@@ -12,13 +12,12 @@ class CategoriesList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.sizeOf(context);
     return ResponsiveLayout(
       mobile: Padding(
         padding: const EdgeInsets.only(right: 20),
         child: CategoriesTiles(
           catergoriesList: catergoriesList,
-          cardWidth: size.width * 0.245,
+          cardWidth: 120,
         ),
       ),
       tablet: CategoriesTiles(
@@ -46,7 +45,7 @@ class CategoriesTiles extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 130,
+      height: 120,
       child: ListView.builder(
         shrinkWrap: true,
         physics: const BouncingScrollPhysics(),
