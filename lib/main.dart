@@ -17,7 +17,8 @@ class MainApp extends StatelessWidget {
       theme: ThemeData(
           // Your app theme
           ),
-      initialRoute: Routes.home,
+      debugShowCheckedModeBanner: false,
+      initialRoute: Routes.filter,
       getPages: Routes.routes,
     );
   }
