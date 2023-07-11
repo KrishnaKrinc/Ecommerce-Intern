@@ -2,6 +2,9 @@
 
 import 'package:ecom/styles/styles.dart';
 import 'package:ecom/utils/colors.dart';
+import 'package:ecom/views/pagelayouts/Productpage/UI/filter_checkBoxCategory.dart';
+import 'package:ecom/views/pagelayouts/Productpage/UI/filter_checkBoxMenu.dart';
+import 'package:ecom/views/pagelayouts/Productpage/UI/filter_priceSlider.dart';
 import 'package:flutter/material.dart';
 
 class Filter extends StatefulWidget {
@@ -16,7 +19,7 @@ class _FilterState extends State<Filter> {
   double _minPrice = 0.0;
   double _maxPrice = 100.0;
 
-  final Map<String, bool> _isVisibleMap = {
+  final Map<String, bool> _isSubmenuVisible = {
     'Colors': false,
     'Brands': false,
     'Discounts': false,
@@ -24,7 +27,7 @@ class _FilterState extends State<Filter> {
   final Map<String, bool> _checkBox = {
     'flipkart': false,
     'color1': false,
-    'color2': false,
+    'color2': true,
     'brand1': false,
     'brand2': false,
     'Discounts1': false,
@@ -32,7 +35,7 @@ class _FilterState extends State<Filter> {
   };
   toggleVisibility(String section) {
     setState(() {
-      _isVisibleMap[section] = !_isVisibleMap[section]!;
+      _isSubmenuVisible[section] = !_isSubmenuVisible[section]!;
     });
   }
 
@@ -54,475 +57,309 @@ class _FilterState extends State<Filter> {
             color: Color.fromARGB(255, 255, 255, 255),
           ),
           width: 350,
-          child: IntrinsicHeight(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  width: double.infinity,
-                  height: 60,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Filters",
-                          style: Styles.headerStyle,
-                        ),
-                        Text(
-                          "CLEAR ALL",
-                          style: Styles.filterClearStyle,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Padding(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                width: double.infinity,
+                height: 60,
+                child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    width: 100,
-                    height: 40,
-                    color: Color.fromARGB(255, 177, 176, 176),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: IconButton(
-                            icon: Icon(Icons.close),
-                            onPressed: () {},
-                          ),
-                        ),
-                        Expanded(
-                          child: Text("Mirror"),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border(
-                      bottom: BorderSide(
-                        color: Colors.grey,
-                        width: 1.0,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Filters",
+                        style: Styles.headerStyle,
                       ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "CATEGORIES",
-                          style: Styles.headerStyleLight2,
-                        ),
-                        Container(
-                          height: 40,
-                          child: Row(
-                            children: [
-                              IconButton(
-                                iconSize: 15,
-                                icon: Icon(Icons.arrow_back_ios_sharp),
-                                onPressed: () {},
-                              ),
-                              Text("Mirror"),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          height: 40,
-                          child: Row(
-                            children: [
-                              IconButton(
-                                iconSize: 15,
-                                icon: Icon(Icons.arrow_back_ios_sharp),
-                                onPressed: () {},
-                              ),
-                              Text("MirrorLess"),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border(
-                      bottom: BorderSide(
-                        color: Colors.grey,
-                        width: 1.0,
+                      Text(
+                        "CLEAR ALL",
+                        style: Styles.filterClearStyle,
                       ),
-                    ),
+                    ],
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: SizedBox(
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(children: [
+                  GridView.builder(
+                    shrinkWrap: true,
+                    physics: ScrollPhysics(),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 8.0,
+                        mainAxisSpacing: 8.0,
+                        childAspectRatio: (1.5 / .4)),
+                    itemCount: _checkBox.length,
+                    itemBuilder: (context, index) {
+                      final categories = _checkBox.keys.toList();
+                      return _checkBox[categories[index]]!
+                          ? Container(
+                              width: 10,
+                              height: 20,
+                              color: Color.fromARGB(255, 177, 176, 176),
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child: IconButton(
+                                      icon: Icon(Icons.close),
+                                      onPressed: () {
+                                        setState(() {
+                                          isChecked(categories[index]);
+                                        });
+                                      },
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Text(categories[index]),
+                                  ),
+                                ],
+                              ),
+                            )
+                          : SizedBox.shrink();
+                    },
+                  ),
+                  //   for (String selectedFilter in _checkBox.keys)
+                  //     if (_checkBox[selectedFilter]!)
+                  //       Container(
+                  //         width: 100,
+                  //         height: 40,
+                  //         color: Color.fromARGB(255, 177, 176, 176),
+                  //         child: Row(
+                  //           children: [
+                  //             Expanded(
+                  //               child: IconButton(
+                  //                 icon: Icon(Icons.close),
+                  //                 onPressed: () {
+                  //                   setState(() {
+                  //                     isChecked(selectedFilter);
+                  //                   });
+                  //                 },
+                  //               ),
+                  //             ),
+                  //             Expanded(
+                  //               child: Text(selectedFilter),
+                  //             ),
+                  //           ],
+                  //         ),
+                  //       )
+                ]),
+              ),
+              Divider(
+                thickness: 1,
+                color: ThemeColors.grey,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "CATEGORIES",
+                        style: Styles.headerStyleLight2,
+                      ),
+                      filterSubCategory(subCategory: "Mirror"),
+                      filterSubCategory(subCategory: "MirrorLess"),
+                    ],
+                  ),
+                ),
+              ),
+              Divider(
+                thickness: 1,
+                color: ThemeColors.grey,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: PriceRangeSlider(
+                    size: size,
+                    minPrice: _minPrice,
+                    maxPrice: _maxPrice,
+                    onMinPriceChanged: (double value) {
+                      setState(() {
+                        _minPrice = value;
+                      });
+                    },
+                    onMaxPriceChanged: (double value) {
+                      setState(() {
+                        _maxPrice = value;
+                      });
+                    }),
+              ),
+              Divider(
+                thickness: 1,
+                color: ThemeColors.grey,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: CheckBoxCategory(
+                  categoryText: "FlipKart Assured",
+                  onChanged: (bool? value) {
+                    isChecked('flipkart');
+                  },
+                  size: size,
+                  value: _checkBox['flipkart']!,
+                ),
+              ),
+              Divider(
+                thickness: 1,
+                color: ThemeColors.grey,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: IntrinsicHeight(
+                  child: Container(
                     width: size.width,
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "PRICE",
-                              style: Styles.headerStyleLight2,
-                            ),
-                            Text(
-                              "CLEAR",
-                              style: Styles.filterClearStyle,
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                SizedBox(
-                                  width: 150,
-                                  child: Slider(
-                                    min: 0.0,
-                                    max: 1000.0,
-                                    activeColor: ThemeColors.white,
-                                    inactiveColor: ThemeColors.blue,
-                                    divisions: 100,
-                                    onChanged: (double value) {
-                                      setState(() {
-                                        _minPrice = value;
-                                      });
-                                    },
-                                    value: _minPrice,
-                                  ),
-                                ),
-                                Text(
-                                  "Min",
-                                  style: Styles.headerStyle2,
-                                ),
-                                Container(
-                                  color: ThemeColors.white,
-                                  width: 70,
-                                  height: 40,
-                                  alignment: Alignment.center,
-                                  child: Text("\$${_minPrice}"),
-                                ),
-                              ],
-                            ),
-                            Text(
-                              "to",
-                              style: Styles.headerStyleLight2,
-                            ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                SizedBox(
-                                  width: 150,
-                                  child: Slider(
-                                    min: 0.0,
-                                    max: 1000.0,
-                                    activeColor: ThemeColors.white,
-                                    inactiveColor: ThemeColors.blue,
-                                    divisions: 100,
-                                    onChanged: (double value) {
-                                      setState(() {
-                                        _maxPrice = value;
-                                      });
-                                    },
-                                    value: _maxPrice,
-                                  ),
-                                ),
-                                Text(
-                                  "Max",
-                                  style: Styles.headerStyle2,
-                                ),
-                                Container(
-                                  color: ThemeColors.white,
-                                  width: 70,
-                                  height: 40,
-                                  alignment: Alignment.center,
-                                  child: Text("\$${_maxPrice}"),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border(
-                      bottom: BorderSide(
-                        color: Colors.grey,
-                        width: 1.0,
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    width: size.width,
-                    height: 50,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Checkbox(
-                          value: _checkBox['flipkart'],
-                          onChanged: (bool? value) {
-                            isChecked('flipkart');
+                        CheckBoxMenu(
+                          textMenu: "Colors",
+                          onPressed: () {
+                            toggleVisibility('Colors');
                           },
                         ),
-                        Text(
-                          "FlipKart Assured",
-                          style: Styles.headerStyleLight2,
+                        Expanded(
+                          child: Visibility(
+                            visible: _isSubmenuVisible['Colors']!,
+                            child: Column(
+                              children: [
+                                CheckBoxCategory(
+                                  categoryText: "Orange",
+                                  size: size,
+                                  value: _checkBox['color1']!,
+                                  onChanged: (bool? value) {
+                                    isChecked('color1');
+                                  },
+                                ),
+                                CheckBoxCategory(
+                                  categoryText: "Black",
+                                  size: size,
+                                  value: _checkBox['color2']!,
+                                  onChanged: (bool? value) {
+                                    isChecked('color2');
+                                  },
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
                       ],
                     ),
                   ),
                 ),
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border(
-                      bottom: BorderSide(
-                        color: Colors.grey,
-                        width: 1.0,
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: IntrinsicHeight(
-                    child: Container(
-                      width: size.width,
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "COLOR",
-                                style: Styles.headerStyleLight2,
-                              ),
-                              IconButton(
-                                icon: Icon(Icons.arrow_drop_down_sharp),
-                                onPressed: () {
-                                  toggleVisibility('Colors');
-                                },
-                              )
-                            ],
-                          ),
-                          Expanded(
-                            child: Visibility(
-                              visible: _isVisibleMap['Colors']!,
-                              child: Column(
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Checkbox(
-                                        value: _checkBox['color1'],
-                                        onChanged: (bool? value) {
-                                          isChecked('color1');
-                                        },
-                                      ),
-                                      Text(
-                                        "Orange",
-                                        style: Styles.headerStyleLight2,
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Checkbox(
-                                        value: _checkBox['color2'],
-                                        onChanged: (bool? value) {
-                                          isChecked('color2');
-                                        },
-                                      ),
-                                      Text(
-                                        "Red",
-                                        style: Styles.headerStyleLight2,
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
+              ),
+              Divider(
+                thickness: 1,
+                color: ThemeColors.grey,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: IntrinsicHeight(
+                  child: Container(
+                    width: size.width,
+                    child: Column(
+                      children: [
+                        CheckBoxMenu(
+                          textMenu: "Brands",
+                          onPressed: () {
+                            toggleVisibility('Brands');
+                          },
+                        ),
+                        Expanded(
+                          child: Visibility(
+                            visible: _isSubmenuVisible['Brands']!,
+                            child: Column(
+                              children: [
+                                CheckBoxCategory(
+                                  categoryText: "Brand1",
+                                  size: size,
+                                  value: _checkBox['brand1']!,
+                                  onChanged: (bool? value) {
+                                    isChecked('brand1');
+                                  },
+                                ),
+                                CheckBoxCategory(
+                                  categoryText: "Brand2",
+                                  size: size,
+                                  value: _checkBox['brand2']!,
+                                  onChanged: (bool? value) {
+                                    isChecked('brand2');
+                                  },
+                                ),
+                              ],
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border(
-                      bottom: BorderSide(
-                        color: Colors.grey,
-                        width: 1.0,
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: IntrinsicHeight(
-                    child: Container(
-                      width: size.width,
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "Brands",
-                                style: Styles.headerStyleLight2,
-                              ),
-                              IconButton(
-                                icon: Icon(Icons.arrow_drop_down_sharp),
-                                onPressed: () {
-                                  toggleVisibility('Brands');
-                                },
-                              )
-                            ],
-                          ),
-                          Expanded(
-                            child: Visibility(
-                              visible: _isVisibleMap['Brands']!,
-                              child: Column(
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Checkbox(
-                                        value: _checkBox['brand1'],
-                                        onChanged: (bool? value) {
-                                          isChecked('brand1');
-                                        },
-                                      ),
-                                      Text(
-                                        "Brand1",
-                                        style: Styles.headerStyleLight2,
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Checkbox(
-                                        value: _checkBox['brand2'],
-                                        onChanged: (bool? value) {
-                                          isChecked('brand2');
-                                        },
-                                      ),
-                                      Text(
-                                        "brand2",
-                                        style: Styles.headerStyleLight2,
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border(
-                      bottom: BorderSide(
-                        color: Colors.grey,
-                        width: 1.0,
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: IntrinsicHeight(
-                    child: Container(
-                      width: size.width,
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "Discounts",
-                                style: Styles.headerStyleLight2,
-                              ),
-                              IconButton(
-                                icon: Icon(Icons.arrow_drop_down_sharp),
-                                onPressed: () {
-                                  toggleVisibility('Discounts');
-                                },
-                              )
-                            ],
-                          ),
-                          Expanded(
-                            child: Visibility(
-                              visible: _isVisibleMap['Discounts']!,
-                              child: Column(
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Checkbox(
-                                        value: _checkBox['Discounts1'],
-                                        onChanged: (bool? value) {
-                                          isChecked('Discounts1');
-                                        },
-                                      ),
-                                      Text(
-                                        "50% Discount",
-                                        style: Styles.headerStyleLight2,
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Checkbox(
-                                        value: _checkBox['Discounts2'],
-                                        onChanged: (bool? value) {
-                                          isChecked('Discounts2');
-                                        },
-                                      ),
-                                      Text(
-                                        "40% Discount",
-                                        style: Styles.headerStyleLight2,
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
+              ),
+              Divider(
+                thickness: 1,
+                color: ThemeColors.grey,
+              )
+            ],
           ),
         ),
       ),
     );
   }
 }
+
+class filterSubCategory extends StatelessWidget {
+  //
+  const filterSubCategory({super.key, required this.subCategory});
+  final String subCategory;
+  //
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 40,
+      child: Row(
+        children: [
+          IconButton(
+            iconSize: 15,
+            icon: Icon(Icons.arrow_back_ios_sharp),
+            onPressed: () {},
+          ),
+          Text(subCategory),
+        ],
+      ),
+    );
+  }
+}
+
+// class filterRemoveCategory extends StatelessWidget {
+//   const filterRemoveCategory({
+//     super.key,
+//     required this.filteredText,
+//   });
+//   final String filteredText;
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       width: 100,
+//       height: 40,
+//       color: Color.fromARGB(255, 177, 176, 176),
+//       child: Row(
+//         children: [
+//           Expanded(
+//             child: IconButton(
+//               icon: Icon(Icons.close),
+//               onPressed: () {
+               
+//               },
+//             ),
+//           ),
+//           Expanded(
+//             child: Text(filteredText),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
