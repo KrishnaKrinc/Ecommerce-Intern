@@ -1,4 +1,5 @@
 import 'package:ecom/views/pages/homepage.dart';
+import 'package:ecom/views/pages/productspage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,7 +13,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Homepage(),
+      home: Productspage(),
     );
   }
 }

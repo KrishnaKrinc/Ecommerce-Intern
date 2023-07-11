@@ -1,3 +1,4 @@
+import 'package:ecom/styles/styles.dart';
 import 'package:flutter/material.dart';
 
 class CategoryTitle extends StatelessWidget {
@@ -5,6 +6,9 @@ class CategoryTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const Text(
+      'Product Title',
+      style: Styles.productStyle,
+    );
   }
 }

@@ -8,12 +8,22 @@ class ProductpageBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      children: [
-        CategoryTitle(),
-        CategoryDescription(),
-        ProductDisplayCards(),
-      ],
+    return const Expanded(
+      child: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        padding: EdgeInsets.only(left: 18, right: 18, top: 18),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CategoryTitle(),
+            SizedBox(height: 5),
+            CategoryDescription(),
+            SizedBox(height: 20),
+            ProductDisplayCards(),
+            SizedBox(height: 5),
+          ],
+        ),
+      ),
     );
   }
 }

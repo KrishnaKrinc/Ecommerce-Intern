@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 
 class Styles {
   static const TextStyle productStyle = TextStyle(
-    fontSize: 28,
+    fontSize: 22,
     fontWeight: FontWeight.bold,
     color: Colors.black,
+  );
+  static const TextStyle descriptionStyle = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.bold,
+    color: Colors.grey,
   );
   static const TextStyle productNameStyle = TextStyle(
     fontSize: 14,
