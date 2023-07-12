@@ -12,6 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   get: ^4.6.5
+  number_paginator: ^0.2.3
 
 dev_dependencies:
   flutter_lints: ^2.0.0

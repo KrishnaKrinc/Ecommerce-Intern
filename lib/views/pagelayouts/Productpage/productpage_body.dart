@@ -9,23 +9,31 @@ class ProductpageBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Expanded(
+    return Expanded(
       child: SingleChildScrollView(
         scrollDirection: Axis.vertical,
-        padding: EdgeInsets.only(left: 18, right: 18, top: 18),
+        padding: const EdgeInsets.only(left: 18, right: 18, top: 18),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CategoryTitle(),
-            SizedBox(height: 5),
-            CategoryDescription(),
-            SizedBox(height: 20),
+            const CategoryTitle(),
+            const SizedBox(height: 5),
+            const CategoryDescription(),
+            const SizedBox(height: 20),
             ResponsiveLayout(
-              mobile: ProductDisplayCards(crossAxisCount: 2),
-              tablet: ProductDisplayCards(crossAxisCount: 4),
-              desktop: ProductDisplayCards(crossAxisCount: 5),
+              mobile: const ProductDisplayCards(
+                crossAxisCount: 2,
+                horizontalSpacing: 0,
+              ),
+              tablet: ProductDisplayCards(
+                crossAxisCount: 4,
+                horizontalSpacing: MediaQuery.sizeOf(context).width / 5,
+              ),
+              desktop: ProductDisplayCards(
+                  crossAxisCount: 5,
+                  horizontalSpacing: MediaQuery.sizeOf(context).width / 4),
             ),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
           ],
         ),
       ),
