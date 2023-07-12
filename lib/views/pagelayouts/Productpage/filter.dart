@@ -33,6 +33,7 @@ class _FilterState extends State<Filter> {
     'Discounts1': false,
     'Discounts2': false,
   };
+
   toggleVisibility(String section) {
     setState(() {
       _isSubmenuVisible[section] = !_isSubmenuVisible[section]!;
@@ -48,6 +49,10 @@ class _FilterState extends State<Filter> {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
+    List<String> trueCategories = _checkBox.entries
+        .where((entry) => entry.value == true)
+        .map((entry) => entry.key)
+        .toList();
     return Scaffold(
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
@@ -74,10 +79,19 @@ class _FilterState extends State<Filter> {
                         "Filters",
                         style: Styles.headerStyle,
                       ),
-                      Text(
-                        "CLEAR ALL",
-                        style: Styles.filterClearStyle,
-                      ),
+                      TextButton(
+                        onPressed: () {
+                          setState(() {
+                            _checkBox.forEach((key, value) {
+                              _checkBox[key] = false;
+                            });
+                          });
+                        },
+                        child: Text(
+                          'Clear All',
+                          style: Styles.filterClearStyle,
+                        ),
+                      )
                     ],
                   ),
                 ),
@@ -89,39 +103,77 @@ class _FilterState extends State<Filter> {
                     shrinkWrap: true,
                     physics: ScrollPhysics(),
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 8.0,
-                        mainAxisSpacing: 8.0,
-                        childAspectRatio: (1.5 / .4)),
-                    itemCount: _checkBox.length,
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 8.0,
+                      mainAxisSpacing: 8.0,
+                      childAspectRatio: (1.5 / .4),
+                    ),
+                    itemCount: trueCategories.length,
                     itemBuilder: (context, index) {
-                      final categories = _checkBox.keys.toList();
-                      return _checkBox[categories[index]]!
-                          ? Container(
-                              width: 10,
-                              height: 20,
-                              color: Color.fromARGB(255, 177, 176, 176),
-                              child: Row(
-                                children: [
-                                  Expanded(
-                                    child: IconButton(
-                                      icon: Icon(Icons.close),
-                                      onPressed: () {
-                                        setState(() {
-                                          isChecked(categories[index]);
-                                        });
-                                      },
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: Text(categories[index]),
-                                  ),
-                                ],
+                      final category = trueCategories[index];
+                      return Container(
+                        width: 10,
+                        height: 20,
+                        color: Color.fromARGB(255, 177, 176, 176),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: IconButton(
+                                icon: Icon(Icons.close),
+                                onPressed: () {
+                                  setState(() {
+                                    isChecked(category);
+                                  });
+                                },
                               ),
-                            )
-                          : SizedBox.shrink();
+                            ),
+                            Expanded(
+                              child: Text(category),
+                            ),
+                          ],
+                        ),
+                      );
                     },
-                  ),
+                  )
+
+                  // GridView.builder(
+                  //   shrinkWrap: true,
+                  //   physics: ScrollPhysics(),
+                  //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  //       crossAxisCount: 2,
+                  //       crossAxisSpacing: 8.0,
+                  //       mainAxisSpacing: 8.0,
+                  //       childAspectRatio: (1.5 / .4)),
+                  //   itemCount: _checkBox.length,
+                  //   itemBuilder: (context, index) {
+                  //     final categories = _checkBox.keys.toList();
+
+                  //     return _checkBox[categories[index]]!
+                  //         ? Container(
+                  //             width: 10,
+                  //             height: 20,
+                  //             color: Color.fromARGB(255, 177, 176, 176),
+                  //             child: Row(
+                  //               children: [
+                  //                 Expanded(
+                  //                   child: IconButton(
+                  //                     icon: Icon(Icons.close),
+                  //                     onPressed: () {
+                  //                       setState(() {
+                  //                         isChecked(categories[index]);
+                  //                       });
+                  //                     },
+                  //                   ),
+                  //                 ),
+                  //                 Expanded(
+                  //                   child: Text(categories[index]),
+                  //                 ),
+                  //               ],
+                  //             ),
+                  //           )
+                  //         : SizedBox.shrink();
+                  //   },
+                  // ),
                   //   for (String selectedFilter in _checkBox.keys)
                   //     if (_checkBox[selectedFilter]!)
                   //       Container(
