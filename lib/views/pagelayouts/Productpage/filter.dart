@@ -28,7 +28,7 @@ class _FilterState extends State<Filter> {
   final Map<String, bool> _checkBox = {
     'flipkart': false,
     'color1': false,
-    'color2': true,
+    'color2': false,
     'brand1': false,
     'brand2': false,
     'Discounts1': false,
@@ -54,218 +54,208 @@ class _FilterState extends State<Filter> {
         .where((entry) => entry.value == true)
         .map((entry) => entry.key)
         .toList();
-    return Scaffold(
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        physics: BouncingScrollPhysics(),
-        child: Container(
-          decoration: BoxDecoration(
-            color: Color.fromARGB(255, 255, 255, 255),
-          ),
-          width: 350,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                width: double.infinity,
-                height: 60,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Filters",
-                        style: Styles.headerStyle,
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          setState(() {
-                            _checkBox.forEach((key, value) {
-                              _checkBox[key] = false;
-                            });
-                          });
-                        },
-                        child: Text(
-                          'Clear All',
-                          style: Styles.filterClearStyle,
-                        ),
-                      )
-                    ],
+    return Container(
+      decoration: BoxDecoration(
+        color: Color.fromARGB(255, 255, 255, 255),
+      ),
+      width: 250,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            width: double.infinity,
+            height: 60,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Filters",
+                    style: Styles.headerStyle,
                   ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(children: [
-                  filterGenerator(
-                      onpressed: (String category) {
-                        setState(() {
-                          isChecked(category);
-                        });
-                      },
-                      trueCategories: trueCategories)
-                ]),
-              ),
-              Divider(
-                thickness: 1,
-                color: ThemeColors.grey,
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "CATEGORIES",
-                        style: Styles.headerStyleLight2,
-                      ),
-                      filterSubCategory(subCategory: "Mirror"),
-                      filterSubCategory(subCategory: "MirrorLess"),
-                    ],
-                  ),
-                ),
-              ),
-              Divider(
-                thickness: 1,
-                color: ThemeColors.grey,
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: PriceRangeSlider(
-                    size: size,
-                    minPrice: _minPrice,
-                    maxPrice: _maxPrice,
-                    onMinPriceChanged: (double value) {
+                  TextButton(
+                    onPressed: () {
                       setState(() {
-                        _minPrice = value;
+                        _checkBox.forEach((key, value) {
+                          _checkBox[key] = false;
+                        });
                       });
                     },
-                    onMaxPriceChanged: (double value) {
-                      setState(() {
-                        _maxPrice = value;
-                      });
-                    }),
-              ),
-              Divider(
-                thickness: 1,
-                color: ThemeColors.grey,
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: CheckBoxCategory(
-                  categoryText: "FlipKart Assured",
-                  onChanged: (bool? value) {
-                    isChecked('flipkart');
-                  },
-                  size: size,
-                  value: _checkBox['flipkart']!,
-                ),
-              ),
-              Divider(
-                thickness: 1,
-                color: ThemeColors.grey,
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: IntrinsicHeight(
-                  child: Container(
-                    width: size.width,
-                    child: Column(
-                      children: [
-                        CheckBoxMenu(
-                          textMenu: "Colors",
-                          onPressed: () {
-                            toggleVisibility('Colors');
-                          },
-                        ),
-                        Expanded(
-                          child: Visibility(
-                            visible: _isSubmenuVisible['Colors']!,
-                            child: Column(
-                              children: [
-                                CheckBoxCategory(
-                                  categoryText: "Orange",
-                                  size: size,
-                                  value: _checkBox['color1']!,
-                                  onChanged: (bool? value) {
-                                    isChecked('color1');
-                                  },
-                                ),
-                                CheckBoxCategory(
-                                  categoryText: "Black",
-                                  size: size,
-                                  value: _checkBox['color2']!,
-                                  onChanged: (bool? value) {
-                                    isChecked('color2');
-                                  },
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
+                    child: Text(
+                      'Clear All',
+                      style: Styles.filterClearStyle,
                     ),
-                  ),
-                ),
+                  )
+                ],
               ),
-              Divider(
-                thickness: 1,
-                color: ThemeColors.grey,
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: IntrinsicHeight(
-                  child: Container(
-                    width: size.width,
-                    child: Column(
-                      children: [
-                        CheckBoxMenu(
-                          textMenu: "Brands",
-                          onPressed: () {
-                            toggleVisibility('Brands');
-                          },
-                        ),
-                        Expanded(
-                          child: Visibility(
-                            visible: _isSubmenuVisible['Brands']!,
-                            child: Column(
-                              children: [
-                                CheckBoxCategory(
-                                  categoryText: "Brand1",
-                                  size: size,
-                                  value: _checkBox['brand1']!,
-                                  onChanged: (bool? value) {
-                                    isChecked('brand1');
-                                  },
-                                ),
-                                CheckBoxCategory(
-                                  categoryText: "Brand2",
-                                  size: size,
-                                  value: _checkBox['brand2']!,
-                                  onChanged: (bool? value) {
-                                    isChecked('brand2');
-                                  },
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              Divider(
-                thickness: 1,
-                color: ThemeColors.grey,
-              )
-            ],
+            ),
           ),
-        ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(children: [
+              filterGenerator(
+                  onpressed: (String category) {
+                    setState(() {
+                      isChecked(category);
+                    });
+                  },
+                  trueCategories: trueCategories)
+            ]),
+          ),
+          Divider(
+            thickness: 1,
+            color: ThemeColors.grey,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "CATEGORIES",
+                    style: Styles.headerStyleLight2,
+                  ),
+                  filterSubCategory(subCategory: "Mirror"),
+                  filterSubCategory(subCategory: "MirrorLess"),
+                ],
+              ),
+            ),
+          ),
+          Divider(
+            thickness: 1,
+            color: ThemeColors.grey,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: PriceRangeSlider(
+                size: size,
+                minPrice: _minPrice,
+                maxPrice: _maxPrice,
+                onMinPriceChanged: (double value) {
+                  setState(() {
+                    _minPrice = value;
+                  });
+                },
+                onMaxPriceChanged: (double value) {
+                  setState(() {
+                    _maxPrice = value;
+                  });
+                }),
+          ),
+          Divider(
+            thickness: 1,
+            color: ThemeColors.grey,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: CheckBoxCategory(
+              categoryText: "FlipKart Assured",
+              onChanged: (bool? value) {
+                isChecked('flipkart');
+              },
+              size: size,
+              value: _checkBox['flipkart']!,
+            ),
+          ),
+          Divider(
+            thickness: 1,
+            color: ThemeColors.grey,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: IntrinsicHeight(
+              child: Container(
+                width: size.width,
+                child: Column(
+                  children: [
+                    CheckBoxMenu(
+                      textMenu: "Colors",
+                      onPressed: () {
+                        toggleVisibility('Colors');
+                      },
+                    ),
+                    Expanded(
+                      child: Visibility(
+                        visible: _isSubmenuVisible['Colors']!,
+                        child: Column(
+                          children: [
+                            CheckBoxCategory(
+                              categoryText: "Orange",
+                              size: size,
+                              value: _checkBox['color1']!,
+                              onChanged: (bool? value) {
+                                isChecked('color1');
+                              },
+                            ),
+                            CheckBoxCategory(
+                              categoryText: "Black",
+                              size: size,
+                              value: _checkBox['color2']!,
+                              onChanged: (bool? value) {
+                                isChecked('color2');
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Divider(
+            thickness: 1,
+            color: ThemeColors.grey,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: IntrinsicHeight(
+              child: Container(
+                width: size.width,
+                child: Column(
+                  children: [
+                    CheckBoxMenu(
+                      textMenu: "Brands",
+                      onPressed: () {
+                        toggleVisibility('Brands');
+                      },
+                    ),
+                    Expanded(
+                      child: Visibility(
+                        visible: _isSubmenuVisible['Brands']!,
+                        child: Column(
+                          children: [
+                            CheckBoxCategory(
+                              categoryText: "Brand1",
+                              size: size,
+                              value: _checkBox['brand1']!,
+                              onChanged: (bool? value) {
+                                isChecked('brand1');
+                              },
+                            ),
+                            CheckBoxCategory(
+                              categoryText: "Brand2",
+                              size: size,
+                              value: _checkBox['brand2']!,
+                              onChanged: (bool? value) {
+                                isChecked('brand2');
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

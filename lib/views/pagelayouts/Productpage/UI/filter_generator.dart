@@ -20,7 +20,7 @@ class filterGenerator extends StatelessWidget {
         crossAxisCount: 2,
         crossAxisSpacing: 8.0,
         mainAxisSpacing: 8.0,
-        childAspectRatio: (1.5 / .4),
+        childAspectRatio: (.9 / .3),
       ),
       itemCount: trueCategories.length,
       itemBuilder: (context, index) {

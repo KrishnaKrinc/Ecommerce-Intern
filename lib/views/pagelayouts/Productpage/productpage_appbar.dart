@@ -1,3 +1,4 @@
+import 'package:ecom/views/pagelayouts/Homepage/homepage_appbar.dart';
 import 'package:flutter/material.dart';
 
 class ProductpageAppbar extends StatelessWidget {
@@ -5,6 +6,6 @@ class ProductpageAppbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return HomepageAppbar();
   }
 }

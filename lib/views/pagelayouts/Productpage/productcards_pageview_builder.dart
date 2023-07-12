@@ -15,7 +15,7 @@ class _ProductCardPageViewBuilderState
     extends State<ProductCardPageViewBuilder> {
   final int maxCardsPerPage = 20;
   final int totalCards = 100;
-
+  int previousPageIndex = 0;
   final PageController _pageController = PageController();
   int _currentPage = 0;
 
@@ -29,8 +29,8 @@ class _ProductCardPageViewBuilderState
   Widget build(BuildContext context) {
     const int maxCardsPerPage = 20;
     const int totalCards = 110;
-    final int totalPages = (totalCards / maxCardsPerPage).ceil();
-
+    // final int totalPages = (totalCards / maxCardsPerPage).ceil();
+    final int totalPages = 10;
     return Column(
       children: [
         Expanded(
@@ -55,8 +55,8 @@ class _ProductCardPageViewBuilderState
               return GridView.count(
                 crossAxisCount: widget.crossAxisCount,
                 shrinkWrap: true,
-                physics: const BouncingScrollPhysics(),
-                childAspectRatio: 1 / 1.25,
+                physics: const NeverScrollableScrollPhysics(),
+                childAspectRatio: 1 / 1.25, // 1/1.25
                 children: pageCards,
               );
             },
@@ -67,24 +67,59 @@ class _ProductCardPageViewBuilderState
             },
           ),
         ),
-        Container(
-          padding: const EdgeInsets.symmetric(vertical: 10),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: List.generate(totalPages, (index) {
-              return GestureDetector(
-                onTap: () {
-                  _pageController.animateToPage(
-                    index,
-                    duration: const Duration(milliseconds: 500),
-                    curve: Curves.easeInOut,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: List.generate(3, (index) {
+                  final pageIndex = previousPageIndex + index;
+                  return GestureDetector(
+                    onTap: () {
+                      _pageController.animateToPage(
+                        pageIndex,
+                        duration: const Duration(milliseconds: 500),
+                        curve: Curves.easeInOut,
+                      );
+                    },
+                    child: PageIndicator(
+                        index: pageIndex, currentPage: _currentPage),
                   );
-                },
-                child: PageIndicator(index: index, currentPage: _currentPage),
-              );
-            }),
-          ),
+                }),
+              ),
+            ),
+            Text("...."),
+            IconButton(
+              onPressed: () {
+                setState(() {
+                  previousPageIndex = previousPageIndex + 1;
+                });
+              },
+              icon: Icon(Icons.arrow_circle_right_outlined),
+            )
+          ],
         ),
+
+        // Container(
+        //   padding: const EdgeInsets.symmetric(vertical: 10),
+        //   child: Row(
+        //     mainAxisAlignment: MainAxisAlignment.center,
+        //     children: List.generate(totalPages, (index) {
+        //       return GestureDetector(
+        //         onTap: () {
+        //           _pageController.animateToPage(
+        //             index,
+        //             duration: const Duration(milliseconds: 500),
+        //             curve: Curves.easeInOut,
+        //           );
+        //         },
+        //         child: PageIndicator(index: index, currentPage: _currentPage),
+        //       );
+        //     }),
+        //   ),
+        // ),
       ],
     );
   }

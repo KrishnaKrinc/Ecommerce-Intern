@@ -8,12 +8,15 @@ class ProductpageLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      children: [
-        ProductpageAppbar(),
-        ProductpageCategoriesBar(),
-        ProductpageBody(),
-      ],
+    return Container(
+      color: Color.fromARGB(255, 240, 240, 240),
+      child: Column(
+        children: [
+          ProductpageAppbar(),
+          ProductpageCategoriesBar(),
+          ProductpageBody(),
+        ],
+      ),
     );
   }
 }

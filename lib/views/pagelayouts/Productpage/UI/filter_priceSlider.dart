@@ -40,7 +40,7 @@ class _PriceRangeSliderState extends State<PriceRangeSlider> {
                 style: Styles.headerStyleLight2,
               ),
               Text(
-                "CLEAR",
+                "Clear",
                 style: Styles.filterClearStyle,
               ),
             ],
@@ -52,7 +52,7 @@ class _PriceRangeSliderState extends State<PriceRangeSlider> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(
-                    width: 150,
+                    width: 100,
                     child: Slider(
                       min: 0.0,
                       max: 1000.0,
@@ -84,7 +84,7 @@ class _PriceRangeSliderState extends State<PriceRangeSlider> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(
-                    width: 150,
+                    width: 100,
                     child: Slider(
                       min: 0.0,
                       max: 1000.0,
