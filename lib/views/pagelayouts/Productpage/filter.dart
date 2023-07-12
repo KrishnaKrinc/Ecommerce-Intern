@@ -4,6 +4,7 @@ import 'package:ecom/styles/styles.dart';
 import 'package:ecom/utils/colors.dart';
 import 'package:ecom/views/pagelayouts/Productpage/UI/filter_checkBoxCategory.dart';
 import 'package:ecom/views/pagelayouts/Productpage/UI/filter_checkBoxMenu.dart';
+import 'package:ecom/views/pagelayouts/Productpage/UI/filter_generator.dart';
 import 'package:ecom/views/pagelayouts/Productpage/UI/filter_priceSlider.dart';
 import 'package:flutter/material.dart';
 
@@ -99,105 +100,13 @@ class _FilterState extends State<Filter> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Column(children: [
-                  GridView.builder(
-                    shrinkWrap: true,
-                    physics: ScrollPhysics(),
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 8.0,
-                      mainAxisSpacing: 8.0,
-                      childAspectRatio: (1.5 / .4),
-                    ),
-                    itemCount: trueCategories.length,
-                    itemBuilder: (context, index) {
-                      final category = trueCategories[index];
-                      return Container(
-                        width: 10,
-                        height: 20,
-                        color: Color.fromARGB(255, 177, 176, 176),
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: IconButton(
-                                icon: Icon(Icons.close),
-                                onPressed: () {
-                                  setState(() {
-                                    isChecked(category);
-                                  });
-                                },
-                              ),
-                            ),
-                            Expanded(
-                              child: Text(category),
-                            ),
-                          ],
-                        ),
-                      );
-                    },
-                  )
-
-                  // GridView.builder(
-                  //   shrinkWrap: true,
-                  //   physics: ScrollPhysics(),
-                  //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  //       crossAxisCount: 2,
-                  //       crossAxisSpacing: 8.0,
-                  //       mainAxisSpacing: 8.0,
-                  //       childAspectRatio: (1.5 / .4)),
-                  //   itemCount: _checkBox.length,
-                  //   itemBuilder: (context, index) {
-                  //     final categories = _checkBox.keys.toList();
-
-                  //     return _checkBox[categories[index]]!
-                  //         ? Container(
-                  //             width: 10,
-                  //             height: 20,
-                  //             color: Color.fromARGB(255, 177, 176, 176),
-                  //             child: Row(
-                  //               children: [
-                  //                 Expanded(
-                  //                   child: IconButton(
-                  //                     icon: Icon(Icons.close),
-                  //                     onPressed: () {
-                  //                       setState(() {
-                  //                         isChecked(categories[index]);
-                  //                       });
-                  //                     },
-                  //                   ),
-                  //                 ),
-                  //                 Expanded(
-                  //                   child: Text(categories[index]),
-                  //                 ),
-                  //               ],
-                  //             ),
-                  //           )
-                  //         : SizedBox.shrink();
-                  //   },
-                  // ),
-                  //   for (String selectedFilter in _checkBox.keys)
-                  //     if (_checkBox[selectedFilter]!)
-                  //       Container(
-                  //         width: 100,
-                  //         height: 40,
-                  //         color: Color.fromARGB(255, 177, 176, 176),
-                  //         child: Row(
-                  //           children: [
-                  //             Expanded(
-                  //               child: IconButton(
-                  //                 icon: Icon(Icons.close),
-                  //                 onPressed: () {
-                  //                   setState(() {
-                  //                     isChecked(selectedFilter);
-                  //                   });
-                  //                 },
-                  //               ),
-                  //             ),
-                  //             Expanded(
-                  //               child: Text(selectedFilter),
-                  //             ),
-                  //           ],
-                  //         ),
-                  //       )
+                  filterGenerator(
+                      onpressed: (String category) {
+                        setState(() {
+                          isChecked(category);
+                        });
+                      },
+                      trueCategories: trueCategories)
                 ]),
               ),
               Divider(
@@ -384,34 +293,3 @@ class filterSubCategory extends StatelessWidget {
     );
   }
 }
-
-// class filterRemoveCategory extends StatelessWidget {
-//   const filterRemoveCategory({
-//     super.key,
-//     required this.filteredText,
-//   });
-//   final String filteredText;
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       width: 100,
-//       height: 40,
-//       color: Color.fromARGB(255, 177, 176, 176),
-//       child: Row(
-//         children: [
-//           Expanded(
-//             child: IconButton(
-//               icon: Icon(Icons.close),
-//               onPressed: () {
-               
-//               },
-//             ),
-//           ),
-//           Expanded(
-//             child: Text(filteredText),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
