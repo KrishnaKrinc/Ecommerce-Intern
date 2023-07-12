@@ -6,7 +6,7 @@ class PageIndicator extends StatelessWidget {
   const PageIndicator(
       {super.key, required this.totalPages, required this.onChange});
   final int totalPages;
-  final Function(int)? onChange;
+  final void Function(int)? onChange;
 
   @override
   Widget build(BuildContext context) {
