@@ -1,6 +1,7 @@
+import 'package:ecom/layout/resposive_layout.dart';
 import 'package:ecom/views/pagelayouts/Productpage/UI/category_description.dart';
 import 'package:ecom/views/pagelayouts/Productpage/UI/category_title.dart';
-import 'package:ecom/views/pagelayouts/Productpage/UI/product_displaycards.dart';
+import 'package:ecom/views/pagelayouts/Productpage/product_displaycards.dart';
 import 'package:flutter/material.dart';
 
 class ProductpageBody extends StatelessWidget {
@@ -19,7 +20,11 @@ class ProductpageBody extends StatelessWidget {
             SizedBox(height: 5),
             CategoryDescription(),
             SizedBox(height: 20),
-            ProductDisplayCards(),
+            ResponsiveLayout(
+              mobile: ProductDisplayCards(crossAxisCount: 2),
+              tablet: ProductDisplayCards(crossAxisCount: 4),
+              desktop: ProductDisplayCards(crossAxisCount: 5),
+            ),
             SizedBox(height: 5),
           ],
         ),

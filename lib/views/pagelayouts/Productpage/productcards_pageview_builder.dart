@@ -1,20 +1,10 @@
-import 'package:ecom/utils/colors.dart';
+import 'package:ecom/views/pagelayouts/Productpage/UI/page_indicator.dart';
+import 'package:ecom/views/pagelayouts/Productpage/UI/productcard_ui.dart';
 import 'package:flutter/material.dart';
 
-class ProductDisplayCards extends StatelessWidget {
-  const ProductDisplayCards({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.sizeOf(context).height,
-      child: const ProductCardPageViewBuilder(),
-    );
-  }
-}
-
 class ProductCardPageViewBuilder extends StatefulWidget {
-  const ProductCardPageViewBuilder({super.key});
+  const ProductCardPageViewBuilder({super.key, required this.crossAxisCount});
+  final int crossAxisCount;
 
   @override
   State<ProductCardPageViewBuilder> createState() =>
@@ -37,12 +27,17 @@ class _ProductCardPageViewBuilderState
 
   @override
   Widget build(BuildContext context) {
+    const int maxCardsPerPage = 20;
+    const int totalCards = 110;
     final int totalPages = (totalCards / maxCardsPerPage).ceil();
+
     return Column(
       children: [
         Expanded(
           child: PageView.builder(
             controller: _pageController,
+            physics:
+                const NeverScrollableScrollPhysics(), // Disable swipe to change pages
             itemCount: totalPages,
             itemBuilder: (BuildContext context, int pageIndex) {
               final startIndex = pageIndex * maxCardsPerPage;
@@ -58,10 +53,10 @@ class _ProductCardPageViewBuilderState
               );
 
               return GridView.count(
-                crossAxisCount: 4,
+                crossAxisCount: widget.crossAxisCount,
                 shrinkWrap: true,
                 physics: const BouncingScrollPhysics(),
-                childAspectRatio: 0.2 / 0.3,
+                childAspectRatio: 1 / 1.25,
                 children: pageCards,
               );
             },
@@ -85,50 +80,12 @@ class _ProductCardPageViewBuilderState
                     curve: Curves.easeInOut,
                   );
                 },
-                child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 5),
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: _currentPage == index
-                        ? ThemeColors.blue
-                        : ThemeColors.transparent,
-                  ),
-                  child: Text(
-                    '${index + 1}',
-                    style: TextStyle(
-                      color: _currentPage == index
-                          ? ThemeColors.white
-                          : ThemeColors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
+                child: PageIndicator(index: index, currentPage: _currentPage),
               );
             }),
           ),
         ),
       ],
-    );
-  }
-}
-
-class ProductCardUI extends StatelessWidget {
-  final int index;
-  final int startIndex;
-
-  const ProductCardUI({
-    super.key,
-    required this.startIndex,
-    required this.index,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      child: Center(
-        child: Text('Product ${startIndex + index + 1}'),
-      ),
     );
   }
 }
