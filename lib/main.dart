@@ -1,5 +1,4 @@
 import 'package:ecom/routes/routes.dart';
-import 'package:ecom/views/pages/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
