@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class CustomElevatedButton extends StatelessWidget {
   final Widget child;
   final Color backgroundColor;
-  final Function onPressed;
+  final void Function() onPressed;
   const CustomElevatedButton(
       {super.key,
       required this.child,
@@ -13,9 +13,7 @@ class CustomElevatedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {
-        print('Login Pressed');
-      },
+      onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         backgroundColor: backgroundColor,
         elevation: 0,
