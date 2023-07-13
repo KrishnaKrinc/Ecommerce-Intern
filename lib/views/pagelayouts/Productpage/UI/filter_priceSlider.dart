@@ -56,8 +56,9 @@ class _PriceRangeSliderState extends State<PriceRangeSlider> {
                     child: Slider(
                       min: 0.0,
                       max: 1000.0,
-                      activeColor: ThemeColors.white,
-                      inactiveColor: ThemeColors.blue,
+                      activeColor: ThemeColors.blue,
+                      inactiveColor: ThemeColors.grey,
+                      thumbColor: ThemeColors.white,
                       divisions: 100,
                       onChanged: widget.onMinPriceChanged,
                       value: widget.minPrice,
@@ -88,8 +89,9 @@ class _PriceRangeSliderState extends State<PriceRangeSlider> {
                     child: Slider(
                       min: 0.0,
                       max: 1000.0,
-                      activeColor: ThemeColors.white,
-                      inactiveColor: ThemeColors.blue,
+                      activeColor: ThemeColors.blue,
+                      inactiveColor: ThemeColors.grey,
+                      thumbColor: ThemeColors.white,
                       divisions: 100,
                       onChanged: widget.onMaxPriceChanged,
                       value: widget.maxPrice,
