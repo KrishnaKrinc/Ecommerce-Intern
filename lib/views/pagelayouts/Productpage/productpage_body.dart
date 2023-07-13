@@ -50,7 +50,7 @@ class ProductpageBody extends StatelessWidget {
                       ),
                       desktop: ProductDisplayCards(
                         crossAxisCount: 5,
-                        horizontalSpacing: 20,
+                        horizontalSpacing: 320,
                       ),
                     ),
                     SizedBox(height: 5),

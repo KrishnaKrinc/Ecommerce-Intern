@@ -32,8 +32,7 @@ class _ProductCardPageViewBuilderState
   Widget build(BuildContext context) {
     const int maxCardsPerPage = 20;
     const int totalCards = 110;
-    // final int totalPages = (totalCards / maxCardsPerPage).ceil();
-    final int totalPages = 10;
+    final int totalPages = (totalCards / maxCardsPerPage).ceil();
     return Column(
       children: [
         Expanded(
@@ -58,7 +57,7 @@ class _ProductCardPageViewBuilderState
               return GridView.count(
                 crossAxisCount: widget.crossAxisCount,
                 shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
                 childAspectRatio: 1 / 1.25, // 1/1.25
                 children: pageCards,
               );
