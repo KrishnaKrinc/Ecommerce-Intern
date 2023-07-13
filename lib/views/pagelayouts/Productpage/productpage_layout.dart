@@ -1,3 +1,6 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
+import 'package:ecom/layout/resposive_layout.dart';
 import 'package:ecom/views/pagelayouts/Productpage/productpage_appbar.dart';
 import 'package:ecom/views/pagelayouts/Productpage/productpage_body.dart';
 import 'package:ecom/views/pagelayouts/Productpage/productpage_categoriesbar.dart';
@@ -13,7 +16,11 @@ class ProductpageLayout extends StatelessWidget {
       child: Column(
         children: [
           ProductpageAppbar(),
-          ProductpageCategoriesBar(),
+          ResponsiveLayout(
+            mobile: SizedBox.shrink(),
+            tablet: SizedBox.shrink(),
+            desktop: ProductpageCategoriesBar(),
+          ),
           ProductpageBody(),
         ],
       ),

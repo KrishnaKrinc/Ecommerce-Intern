@@ -13,9 +13,6 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Ecommerce',
-      theme: ThemeData(
-          // Your app theme
-          ),
       debugShowCheckedModeBanner: false,
       initialRoute: Routes.home,
       getPages: Routes.routes,

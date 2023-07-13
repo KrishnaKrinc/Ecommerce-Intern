@@ -8,7 +8,7 @@ class ProductDisplayCards extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.sizeOf(context).height * 2,
+      height: MediaQuery.sizeOf(context).height * 1.7,
       child: ProductCardPageViewBuilder(crossAxisCount: crossAxisCount),
     );
   }

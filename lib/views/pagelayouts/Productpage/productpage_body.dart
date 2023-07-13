@@ -20,7 +20,11 @@ class ProductpageBody extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Filter(),
+            ResponsiveLayout(
+              mobile: SizedBox.shrink(),
+              tablet: Filter(),
+              desktop: Filter(),
+            ),
             SizedBox(
               width: 10,
             ),
