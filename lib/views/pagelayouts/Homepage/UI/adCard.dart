@@ -34,12 +34,9 @@ class AdCard extends StatelessWidget {
             height: 40,
             child: CustomElevatedButton(
               backgroundColor: ThemeColors.blue,
-              onPressed: () {},
-              child: GestureDetector(
-                onTap: () => Get.toNamed(Routes.product),
-                child: const Text(
-                  "View All",
-                ),
+              onPressed: () => Get.toNamed(Routes.product),
+              child: const Text(
+                "View All",
               ),
             ),
           ),

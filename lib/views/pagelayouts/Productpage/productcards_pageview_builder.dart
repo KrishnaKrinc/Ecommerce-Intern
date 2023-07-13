@@ -3,8 +3,12 @@ import 'package:ecom/views/pagelayouts/Productpage/UI/productcard_ui.dart';
 import 'package:flutter/material.dart';
 
 class ProductCardPageViewBuilder extends StatefulWidget {
-  const ProductCardPageViewBuilder({super.key, required this.crossAxisCount});
+  const ProductCardPageViewBuilder(
+      {super.key,
+      required this.crossAxisCount,
+      required this.horizontalSpacing});
   final int crossAxisCount;
+  final double horizontalSpacing;
 
   @override
   State<ProductCardPageViewBuilder> createState() =>
@@ -17,7 +21,6 @@ class _ProductCardPageViewBuilderState
   final int totalCards = 100;
   int previousPageIndex = 0;
   final PageController _pageController = PageController();
-  int _currentPage = 0;
 
   @override
   void dispose() {
@@ -61,65 +64,26 @@ class _ProductCardPageViewBuilderState
               );
             },
             onPageChanged: (int page) {
-              setState(() {
-                _currentPage = page;
-              });
+              setState(() {});
             },
           ),
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: List.generate(3, (index) {
-                  final pageIndex = previousPageIndex + index;
-                  return GestureDetector(
-                    onTap: () {
-                      _pageController.animateToPage(
-                        pageIndex,
-                        duration: const Duration(milliseconds: 500),
-                        curve: Curves.easeInOut,
-                      );
-                    },
-                    child: PageIndicator(
-                        index: pageIndex, currentPage: _currentPage),
-                  );
-                }),
-              ),
-            ),
-            Text("...."),
-            IconButton(
-              onPressed: () {
-                setState(() {
-                  previousPageIndex = previousPageIndex + 1;
-                });
-              },
-              icon: Icon(Icons.arrow_circle_right_outlined),
-            )
-          ],
+        Container(
+          padding: EdgeInsets.symmetric(
+              vertical: 10, horizontal: widget.horizontalSpacing),
+          child: PageIndicator(
+            onChange: (index) {
+              setState(() {
+                _pageController.animateToPage(
+                  index,
+                  duration: const Duration(milliseconds: 500),
+                  curve: Curves.easeInOut,
+                );
+              });
+            },
+            totalPages: totalPages,
+          ),
         ),
-
-        // Container(
-        //   padding: const EdgeInsets.symmetric(vertical: 10),
-        //   child: Row(
-        //     mainAxisAlignment: MainAxisAlignment.center,
-        //     children: List.generate(totalPages, (index) {
-        //       return GestureDetector(
-        //         onTap: () {
-        //           _pageController.animateToPage(
-        //             index,
-        //             duration: const Duration(milliseconds: 500),
-        //             curve: Curves.easeInOut,
-        //           );
-        //         },
-        //         child: PageIndicator(index: index, currentPage: _currentPage),
-        //       );
-        //     }),
-        //   ),
-        // ),
       ],
     );
   }

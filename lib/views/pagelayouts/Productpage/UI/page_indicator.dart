@@ -1,33 +1,20 @@
 import 'package:ecom/utils/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:number_paginator/number_paginator.dart';
 
 class PageIndicator extends StatelessWidget {
-  const PageIndicator({
-    super.key,
-    required int currentPage,
-    required this.index,
-  }) : _currentPage = currentPage;
-
-  final int _currentPage;
-  final int index;
+  const PageIndicator(
+      {super.key, required this.totalPages, required this.onChange});
+  final int totalPages;
+  final void Function(int)? onChange;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 5),
-      padding: const EdgeInsets.all(10),
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color:
-            _currentPage == index ? ThemeColors.blue : ThemeColors.transparent,
-      ),
-      child: Text(
-        '${index + 1}',
-        style: TextStyle(
-          color: _currentPage == index ? ThemeColors.white : ThemeColors.black,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
+    return NumberPaginator(
+      numberPages: totalPages,
+      config: NumberPaginatorUIConfig(
+          buttonUnselectedForegroundColor: ThemeColors.black),
+      onPageChange: onChange,
     );
   }
 }

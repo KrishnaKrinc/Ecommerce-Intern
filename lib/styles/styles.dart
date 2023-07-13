@@ -22,7 +22,7 @@ class Styles {
     color: Colors.black,
   );
   static const TextStyle descriptionStyle = TextStyle(
-    fontSize: 18,
+    fontSize: 14,
     fontWeight: FontWeight.bold,
     color: Colors.grey,
   );

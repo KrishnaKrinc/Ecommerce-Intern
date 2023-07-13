@@ -40,9 +40,18 @@ class ProductpageBody extends StatelessWidget {
                     CategoryDescription(),
                     SizedBox(height: 20),
                     ResponsiveLayout(
-                      mobile: ProductDisplayCards(crossAxisCount: 2),
-                      tablet: ProductDisplayCards(crossAxisCount: 4),
-                      desktop: ProductDisplayCards(crossAxisCount: 5),
+                      mobile: ProductDisplayCards(
+                        crossAxisCount: 2,
+                        horizontalSpacing: 20,
+                      ),
+                      tablet: ProductDisplayCards(
+                        crossAxisCount: 4,
+                        horizontalSpacing: 20,
+                      ),
+                      desktop: ProductDisplayCards(
+                        crossAxisCount: 5,
+                        horizontalSpacing: 20,
+                      ),
                     ),
                     SizedBox(height: 5),
                   ],
