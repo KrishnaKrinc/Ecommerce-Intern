@@ -16,6 +16,7 @@ class CustomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppBar(
       title: title,
+      leading: null,
       backgroundColor: backgroundColor,
       elevation: 0,
       toolbarHeight: height,
